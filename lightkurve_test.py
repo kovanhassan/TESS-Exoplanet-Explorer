@@ -12,3 +12,5 @@ print(lc)
 print("Number of data points:", len(lc.time))
 
 lc.plot()
+
+print("Test Done")
