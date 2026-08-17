@@ -32,17 +32,15 @@ st.info(
     "causing a small temporary decrease in the star's brightness."
 )
 
-# this draws all the sidebar widgets (target name, sliders, the search
-# button, etc.) and hands back whatever the user picked
+# this draws all the sidebar widgets 
 settings = render_sidebar()
 
 
-# ===================================================
-# main program
-# only runs after button is clicked
-# ===================================================
 
-# streamlit reruns this whole script top to bottom every time something
+# main program
+# ONLY starts to run after button is clicked
+
+# streamlit will just rerun this whole script top to bottom every time something
 # changes, so this if/else is basically "did they just click search"
 if settings.search_button:
     # hand everything off to results.py, that's where the real work happens
@@ -56,7 +54,7 @@ if settings.search_button:
     )
 
 else:
-    # nothing searched yet, so just show quick instructions instead
+    # nothing searched yet, so just show quick bit of instructions instead
     st.subheader("How to begin")
 
     st.write(

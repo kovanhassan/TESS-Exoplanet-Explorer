@@ -7,15 +7,12 @@ planet at a time.
 
 import numpy as np
 
-# how much wider than the detected transit duration to mask out before
-# searching for another planet - increase if the same planet keeps
-# getting detected again
+# how much extra time around the transit we remove before looking for another planet
+# gonna increase this if the same planet keeps getting detected
 MASK_WIDTH_FACTOR = 1.5
 
-# how many trial periods to test in each round's BLS search - a coarser
-# grid can miss the true peak of a real signal, which both hides weaker
-# planets and can leave enough of a stronger planet's signal unmasked
-# that it gets rediscovered as a spurious near-duplicate later on
+# how many different periods to test in each BLS search
+# using too few can miss the actual period and cause the same planet to show up again
 NUMBER_OF_PERIODS = 20000
 
 # minimum number of data points left before we give up searching for
@@ -117,8 +114,8 @@ def search_for_planets(light_curve, min_period, max_period, number_of_planets):
             "folded_light_curve": folded_light_curve,
         }
 
-        # now block out the points that belong to this transit so the
-        # next loop doesn't just find the same planet again
+# remove the points from this transit so the next search
+# can look for a different planet instead of finding the same one again
         transit_mask = periodogram.get_transit_mask(
             period=best_period,
             transit_time=best_transit_time,

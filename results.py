@@ -84,7 +84,7 @@ def _search_target(target):
 
 
 def _download_light_curves(search_result, maximum_sectors):
-    # this is the slow part - actually pulling the fits files down.
+    # this is the slow part...
     # only grab up to maximum_sectors of them, not everything available
     with st.spinner("Downloading and preparing the TESS data..."):
         selected_results = search_result[:maximum_sectors]
@@ -134,7 +134,7 @@ def render_nasa_eyes_section(target):
 
     components.iframe(nasa_eyes_url, height=650, scrolling=True)
 
-    # backup button in case NASA doesn't display
+    # backup button in case the NASA doesn't display
     # properly inside the webpage
     st.link_button("Open NASA Eyes in New Tab", nasa_eyes_url)
 
@@ -206,9 +206,8 @@ def render_planet_search_section(
     with st.spinner("Flattening the light curve..."):
         flattened_light_curve = prepare_flattened_light_curve(collection, window_length)
 
-    # search_for_planets is a generator - each planet is yielded as soon
-    # as it's found, so we can show a spinner and result for one planet
-    # at a time instead of one long wait for all of them
+    # search_for_planets finds the planets one at a time
+# so we can show each result as soon as it's found instead of waiting for all of them
     planet_generator = search_for_planets(
         flattened_light_curve,
         minimum_period,
