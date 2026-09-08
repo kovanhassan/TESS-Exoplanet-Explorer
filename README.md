@@ -41,30 +41,6 @@ planet candidates through an interactive Streamlit interface.
 
 ---
 
-## 🖥️ Application Preview
-
-> Add screenshots of the running application to an `images` folder in this
-> repository, then replace the example filenames below with your actual
-> image filenames.
-
-### TESS Exoplanet Explorer Dashboard
-
-![TESS Exoplanet Explorer Dashboard](images/dashboard.png)
-
-### TESS Light Curve
-
-![TESS Light Curve](images/light-curve.png)
-
-### BLS Period Search
-
-![BLS Periodogram](images/bls-periodogram.png)
-
-### Phase-Folded Candidate
-
-![Phase-Folded Transit](images/folded-transit.png)
-
----
-
 ## ⚙️ How It Works
 
 ### 1. Retrieve TESS Data
